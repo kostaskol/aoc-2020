@@ -1,7 +1,7 @@
 use crate::utils;
 
 pub fn run(extra: bool) {
-    let lines = utils::read_lines("input/1.txt");
+    let lines = utils::read_lines("inputs/1.txt");
     let mut input: Vec<i32>  = lines.iter()
         .map(|i| i.parse().expect(&format!("{} is not a number. Duh!", i)))
         .collect();
