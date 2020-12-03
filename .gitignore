@@ -2,3 +2,4 @@
 .DS_STORE
 Cargo.lock
 inputs/test.txt
+*.swp
