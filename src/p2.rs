@@ -12,10 +12,8 @@ pub fn run(extra: bool) {
             if policy.is_actually_valid() {
                 valid_passwds += 1;
             }
-        } else {
-            if policy.is_valid() {
-                valid_passwds += 1;
-            }
+        } else if policy.is_valid() {
+            valid_passwds += 1;
         }
     }
 
@@ -49,10 +47,10 @@ struct Policy {
 
 impl Policy {
     fn new(unparsed: &str, passwd: String) -> Policy {
-        let parts: Vec<&str> = unparsed.split(" ").collect();
+        let parts: Vec<&str> = unparsed.split(' ').collect();
         let (range, character) = (parts[0], parts[1].chars().next().unwrap());
 
-        let parts: Vec<&str> = range.split("-").collect();
+        let parts: Vec<&str> = range.split('-').collect();
         let (min, max) = (
             parts[0].parse::<u8>().unwrap(),
             parts[1].parse::<u8>().unwrap()
@@ -70,7 +68,7 @@ impl Policy {
     fn is_actually_valid(&self) -> bool {
         let mut counts = 0;
 
-        for pos in vec![self.min, self.max] {
+        for pos in &[self.min, self.max] {
             if self.passwd.chars().nth((pos - 1) as usize).unwrap() == self.character {
                 counts += 1;
             }

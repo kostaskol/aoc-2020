@@ -157,8 +157,8 @@ impl Passport {
                 continue;
             }
 
-            for part in line.split(" ") {
-                let creds: Vec<&str> = part.split(":").collect();
+            for part in line.split(' ') {
+                let creds: Vec<&str> = part.split(':').collect();
 
                 match creds[0] {
                     "byr" => p.byr = Some(creds[1].parse::<u16>().unwrap()),
